@@ -1,21 +1,37 @@
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
 
 const CardDetail = () => {
+    const history = useHistory()
+
+    const exitPostHandler = (e) => {
+        const el = e.target;
+        if(el.classList.contains('modal')) {
+            document.body.style.overflow = 'auto'
+            history.push('/')
+        }
+    }
+
     const { post, isLoading } = useSelector((state) => state.post)
     console.log(post)
 
     return (
-        <>
+        <>  
             {!isLoading && (
-            <CardShadow>
+            <CardShadow className="modal" onClick={exitPostHandler}>
                 <Detail>
                     {post.map((el) => (
                         <div key={el.id}>
                             <h2>{el.publishDate}</h2>
                             <img src={el.image} alt=""/>
                             <p>{el.text}</p>
-                            <p>{el.likes}</p>
+                            <p>Likes: {el.likes}</p>
+                            <div className="tags">
+                                TAGS: {el.tags.map(tag => (
+                                    <p>{tag}</p>
+                                ))}
+                            </div>
                         </div>
                     ))}
                 </Detail>

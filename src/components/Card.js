@@ -9,6 +9,7 @@ const Card = ({ id, firstName, lastName, picture, email }) => {
     const dispatch = useDispatch()
 
     const loadPostsHandler = () => {
+        document.body.style.overflow = 'hidden'
         dispatch(loadPosts(id))
     }
 

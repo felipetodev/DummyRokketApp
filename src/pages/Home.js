@@ -4,6 +4,7 @@ import { loadDummy } from '../actions/dummyAction'
 import Card from '../components/Card'
 import CardDetail from '../components/CardDetail'
 import { useLocation } from 'react-router-dom'
+import Nav from '../components/Nav'
 
 const Home = () => {
     const location = useLocation()
@@ -21,6 +22,7 @@ const Home = () => {
         
     return (
         <div>
+            <Nav />
             <h2>Hola</h2>
             {pathId && <CardDetail />}
             {
