@@ -1,8 +1,5 @@
 const initState = {
-    user: [],
-    post: [],
-    comment: [],
-    tag: []
+    user: []
 }
 
 const dummyReducer = (state=initState, action) => {

@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadDummy } from '../actions/dummyAction'
 import Card from '../components/Card'
 import CardDetail from '../components/CardDetail'
+import SearchDetail from '../components/SearchDetail'
+import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion'
+import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
-import Nav from '../components/Nav'
 
 const Home = () => {
     const location = useLocation()
-    // console.log(location.pathname)
     const pathId = location.pathname.split('/')[2]
-    // console.log(path)
 
     const dispatch = useDispatch()
 
@@ -18,27 +18,52 @@ const Home = () => {
         dispatch(loadDummy())
     }, [dispatch])
 
-    const { user, post, comment, tag } = useSelector((state) => state.dummy)
+    const { user } = useSelector((state) => state.dummy)
         
     return (
-        <div>
-            <Nav />
-            <h2>Hola</h2>
-            {pathId && <CardDetail />}
-            {
-                user.map((user) => (
-                    <Card
-                        key={user.id}
-                        id={user.id}
-                        firstName={user.firstName} 
-                        lastName={user.lastName}
-                        picture={user.picture}
-                        email={user.email}
-                    />    
-                ))
-            }
-        </div>
+        <CardList>
+            {/* <SearchDetail /> */}
+            <AnimateSharedLayout type="crossfade">
+                <AnimatePresence>
+                {pathId && <CardDetail pathId={pathId} />}
+                </AnimatePresence>
+                <div className="totalmembers">
+                    <h2>Rokket Members 🚀</h2>
+                    <Cards>
+                        {
+                            user.map((user) => (
+                                <Card
+                                    key={user.id}
+                                    id={user.id}
+                                    title={user.title}
+                                    firstName={user.firstName} 
+                                    lastName={user.lastName}
+                                    picture={user.picture}
+                                    email={user.email}
+                                />    
+                            ))
+                        }
+                    </Cards>
+                </div>
+            </AnimateSharedLayout>
+        </CardList>
     )
 }
+
+const CardList = styled(motion.div)`
+    text-align: center;
+    padding: 0rem 2rem;
+
+    h2 {
+        padding: 1rem 0rem;
+    }
+`
+
+const Cards = styled(motion.div)`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    padding: 3rem;
+`
 
 export default Home
