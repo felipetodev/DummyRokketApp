@@ -56,6 +56,10 @@ const GlobalStyles = createGlobalStyle`
         font-weight: bold;
         font-family: 'Poppins', sans-serif;
     }
+
+    span {
+        font-weight: bold;
+    }
 `
 
 export default GlobalStyles

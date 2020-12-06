@@ -9,7 +9,7 @@ export const loadDummy = () => async (dispatch) => {
     }
 
     const userData = await axios.get(dummyUserURL(), param)
-    console.log('usuarios', userData.data.data)
+    // console.log('usuarios', userData.data.data)
 
     dispatch({
         type: 'FETCH_DUMMY',

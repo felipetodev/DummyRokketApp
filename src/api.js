@@ -1,5 +1,5 @@
 const base_url = 'https://dummyapi.io/data/api';
-export const APP_ID = '5fcbd801421b89e5061d4a28';
+export const APP_ID = '5fcd0e39a59066f53b6e3043';
 
 //ENDPOINTS
 export const dummyUserURL = () => `${base_url}/user`

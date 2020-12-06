@@ -9,7 +9,7 @@ export const loadPostsByTag = (idTag) => async (dispatch) => {
     }
 
     const tagData = await axios.get(tagPostURL(idTag), options)
-    console.log(tagData)
+    // console.log(tagData.data.data)
     
     dispatch({
         type: 'GET_TAG',

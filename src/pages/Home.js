@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadDummy } from '../actions/dummyAction'
 import Card from '../components/Card'
 import CardDetail from '../components/CardDetail'
-import SearchDetail from '../components/SearchDetail'
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
@@ -22,7 +21,6 @@ const Home = () => {
         
     return (
         <CardList>
-            {/* <SearchDetail /> */}
             <AnimateSharedLayout type="crossfade">
                 <AnimatePresence>
                 {pathId && <CardDetail pathId={pathId} />}

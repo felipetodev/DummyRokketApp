@@ -1,4 +1,4 @@
-const initState = { tag: {} }
+const initState = { tag: [] }
 
 const tagReducer = (state=initState, action) => {
     switch(action.type) {
@@ -6,6 +6,11 @@ const tagReducer = (state=initState, action) => {
             return {
                 ...state,
                 tag: action.payload.tag
+            }
+        case "CLEAR_TAG":
+            return {
+                ...state,
+                tag: [],
             }
         default:
             return {...state}

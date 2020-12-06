@@ -15,7 +15,6 @@ const CardDetail = ({ pathId }) => {
     }
 
     const { post, isLoading } = useSelector((state) => state.post)
-    console.log(post)
 
     return (
         <>  
@@ -25,9 +24,9 @@ const CardDetail = ({ pathId }) => {
                     {post.map((el) => (
                         <Card key={el.id}>
                             <h2>{el.publishDate}</h2>
-                            <img src={el.image} alt={el.id}/>
-                            <h2 className="title__card">"{el.text}"</h2>
-                            <h2 className="author__card">Author: {el.owner.firstName} {el.owner.lastName}</h2>
+                            <img src={el.image} alt={el.owner.firstName}/>
+                            <h2 className="title__card"><span>"</span>{el.text}<span>"</span></h2>
+                            <h2 className="author__card">Author: <span>{el.owner.firstName} {el.owner.lastName}</span></h2>
                             <div>
                                 <h2>💜 {el.likes}</h2>
                                 <CardTags>
@@ -80,7 +79,9 @@ const Detail = styled(motion.div)`
     z-index: 2;
 
     img {
-        width: 80%;
+        width: 50%;
+        border: 5px solid #6867e45e;
+        border-radius: 10px;
     }
 `
 

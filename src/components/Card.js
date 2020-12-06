@@ -43,8 +43,9 @@ const StyledUser = styled(motion.div)`
     font-size: 0.8rem;
     border: 2px solid #6143e4;
 
-    .title {    
-        color: #fff;
+    .title {
+        font-weight: bold;
+        color: #6143e4;
         text-transform: uppercase;
     }
 
@@ -59,11 +60,13 @@ const StyledUser = styled(motion.div)`
         width: 50%;
         border-radius: 50%;
         object-fit: cover;
-        transition: all 300ms ease;
+        opacity: 0.95;
+        transition: all 500ms ease;
     }
 
     img:hover {
-        transform: scale(1.1);
+        transform: scale(1.08);
+        opacity: 1;
     }
 `
 
